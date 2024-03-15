@@ -20,4 +20,4 @@ Prender todos los 16 LEDs que estaban apagados y luego apagarlos para validar va
 
 Comprobar los valores límite.
 
-Agregar pruebas faltantes
+Agregar pruebas faltantes - emprolijar repo
