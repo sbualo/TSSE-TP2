@@ -1,0 +1,30 @@
+---
+:source:
+  :path: test
+  :file: test_leds.c
+:successes:
+- :test: test_todos_los_led_deben_estar_apagados_al_iniciar_el_driver
+  :line: 17
+  :message: ''
+  :unity_test_time: 0
+- :test: test_prender_un_led
+  :line: 27
+  :message: ''
+  :unity_test_time: 0
+- :test: test_apagar_un_led
+  :line: 36
+  :message: ''
+  :unity_test_time: 0
+- :test: test_operar_varios_led
+  :line: 46
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 4
+  :passed: 4
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.5454429998062551
