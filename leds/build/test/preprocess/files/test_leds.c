@@ -146,3 +146,73 @@ void test_limit_values(void) {
                            (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
                            (UNITY_UINT)(93), UNITY_DISPLAY_STYLE_UINT16);
 }
+
+void test_limit_values_all_leds_on(void) {
+
+    int espected_value = 0x00;
+
+    for (int i = 1; i < 17; i++) {
+
+        leds_turn_on(i);
+
+        espected_value |= (1 << (i - 1));
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((espected_value)),
+                               (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                               (UNITY_UINT)(104), UNITY_DISPLAY_STYLE_UINT16);
+    }
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(106), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_on(0);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(110), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_on(1);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(112), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_off(0);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_off(1);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111110)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_on(1);
+
+    leds_turn_on(17);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(123), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_on(16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(125), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_off(17);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(128), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_off(16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b0111111111111111)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(130), UNITY_DISPLAY_STYLE_UINT16);
+}

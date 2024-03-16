@@ -92,3 +92,40 @@ void test_limit_values(void) {
     leds_turn_off(16);
     TEST_ASSERT_EQUAL_UINT16(ALL_LED_OFF, leds_virtuales);
 }
+
+void test_limit_values_all_leds_on(void) {
+
+    int espected_value = ALL_LED_OFF;
+    for (int i = 1; i < 17; i++) {
+        leds_turn_on(i);
+        espected_value |= LED_TO_BIT(i);
+        TEST_ASSERT_EQUAL_UINT16(
+            espected_value,
+            leds_virtuales); // Comparo que a medida que se prenden voy obteniendo el valor esperado
+    }
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_ON, leds_virtuales);
+    // Ya estan todos los led prendidos
+
+    leds_turn_on(0);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_ON, leds_virtuales);
+    leds_turn_on(1);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_ON, leds_virtuales);
+
+    leds_turn_off(0);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_ON, leds_virtuales);
+    leds_turn_off(1);
+    TEST_ASSERT_EQUAL_UINT16(0b1111111111111110, leds_virtuales);
+
+    leds_turn_on(1);
+    // test valores superiores
+
+    leds_turn_on(17);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_ON, leds_virtuales);
+    leds_turn_on(16);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_ON, leds_virtuales);
+
+    leds_turn_off(17);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_ON, leds_virtuales);
+    leds_turn_off(16);
+    TEST_ASSERT_EQUAL_UINT16(0b0111111111111111, leds_virtuales);
+}

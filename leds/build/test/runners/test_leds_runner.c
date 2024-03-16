@@ -16,6 +16,7 @@ extern void test_apagar_un_led(void);
 extern void test_operar_varios_led(void);
 extern void test_prender_apagar_todos_los_led(void);
 extern void test_limit_values(void);
+extern void test_limit_values_all_leds_on(void);
 
 /*=======Mock Management=====*/
 static void CMock_Init(void) {
@@ -81,6 +82,7 @@ int main(void) {
     run_test(test_operar_varios_led, "test_operar_varios_led", 41);
     run_test(test_prender_apagar_todos_los_led, "test_prender_apagar_todos_los_led", 52);
     run_test(test_limit_values, "test_limit_values", 72);
+    run_test(test_limit_values_all_leds_on, "test_limit_values_all_leds_on", 96);
 
     return UnityEnd();
 }
