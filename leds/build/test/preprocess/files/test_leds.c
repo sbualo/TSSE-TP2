@@ -18,7 +18,7 @@ void test_todos_los_led_deben_estar_apagados_al_iniciar_el_driver(void) {
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0x00)),
                            (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
-                           (UNITY_UINT)(21), UNITY_DISPLAY_STYLE_UINT16);
+                           (UNITY_UINT)(19), UNITY_DISPLAY_STYLE_UINT16);
 }
 
 void test_prender_un_led(void) {
@@ -27,10 +27,10 @@ void test_prender_un_led(void) {
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((1 << (LED - 1))),
                            (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
-                           (UNITY_UINT)(31), UNITY_DISPLAY_STYLE_UINT16);
+                           (UNITY_UINT)(28), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertBits((UNITY_INT)((~(1 << (LED - 1)))), (UNITY_INT)((UNITY_UINT)(0)),
-                    (UNITY_INT)((leds_virtuales)), (((void *)0)), (UNITY_UINT)(33));
+                    (UNITY_INT)((leds_virtuales)), (((void *)0)), (UNITY_UINT)(30));
 }
 
 void test_apagar_un_led(void) {
@@ -41,7 +41,7 @@ void test_apagar_un_led(void) {
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0x00)),
                            (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
-                           (UNITY_UINT)(42), UNITY_DISPLAY_STYLE_UINT16);
+                           (UNITY_UINT)(38), UNITY_DISPLAY_STYLE_UINT16);
 }
 
 void test_operar_varios_led(void) {
@@ -58,7 +58,7 @@ void test_operar_varios_led(void) {
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((1 << (7 - 1))),
                            (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
-                           (UNITY_UINT)(55), UNITY_DISPLAY_STYLE_UINT16);
+                           (UNITY_UINT)(49), UNITY_DISPLAY_STYLE_UINT16);
 }
 
 void test_prender_apagar_todos_los_led(void) {
@@ -73,12 +73,12 @@ void test_prender_apagar_todos_los_led(void) {
 
         UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((espected_value)),
                                (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
-                               (UNITY_UINT)(63), UNITY_DISPLAY_STYLE_UINT16);
+                               (UNITY_UINT)(59), UNITY_DISPLAY_STYLE_UINT16);
     }
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0b1111111111111111)),
                            (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
-                           (UNITY_UINT)(65), UNITY_DISPLAY_STYLE_UINT16);
+                           (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_UINT16);
 
     for (int i = 1; i < 17; i++) {
 
@@ -88,6 +88,37 @@ void test_prender_apagar_todos_los_led(void) {
 
         UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((espected_value)),
                                (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
-                               (UNITY_UINT)(69), UNITY_DISPLAY_STYLE_UINT16);
+                               (UNITY_UINT)(67), UNITY_DISPLAY_STYLE_UINT16);
     }
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0x00)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(69), UNITY_DISPLAY_STYLE_UINT16);
+}
+
+void test_limit_values(void) {
+
+    leds_turn_on(0);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0x00)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(75), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_on(1);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)(((1 << (1 - 1)))),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_off(0);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)(((1 << (1 - 1)))),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(80), UNITY_DISPLAY_STYLE_UINT16);
+
+    leds_turn_off(1);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((1)),
+                           (UNITY_INT)(UNITY_UINT16)((leds_virtuales)), (((void *)0)),
+                           (UNITY_UINT)(82), UNITY_DISPLAY_STYLE_UINT16);
 }
