@@ -79,4 +79,16 @@ void test_limit_values(void) {
     TEST_ASSERT_EQUAL_UINT16(LED_TO_BIT(1), leds_virtuales);
     leds_turn_off(1);
     TEST_ASSERT_EQUAL_UINT16(ALL_LED_OFF, leds_virtuales);
+
+    // test valores superiores
+
+    leds_turn_on(17);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_OFF, leds_virtuales);
+    leds_turn_on(16);
+    TEST_ASSERT_EQUAL_UINT16(LED_TO_BIT(16), leds_virtuales);
+
+    leds_turn_off(17);
+    TEST_ASSERT_EQUAL_UINT16(LED_TO_BIT(16), leds_virtuales);
+    leds_turn_off(16);
+    TEST_ASSERT_EQUAL_UINT16(ALL_LED_OFF, leds_virtuales);
 }

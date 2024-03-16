@@ -80,7 +80,7 @@ int main(void) {
     run_test(test_apagar_un_led, "test_apagar_un_led", 33);
     run_test(test_operar_varios_led, "test_operar_varios_led", 41);
     run_test(test_prender_apagar_todos_los_led, "test_prender_apagar_todos_los_led", 52);
-    run_test(test_limit_values, "test_limit_values", 73);
+    run_test(test_limit_values, "test_limit_values", 72);
 
     return UnityEnd();
 }
