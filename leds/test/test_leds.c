@@ -125,3 +125,9 @@ void test_check_led_status_off(void) {
     bool status = led_check_status(1);
     TEST_ASSERT_EQUAL_UINT16(false, status);
 }
+
+void test_check_led_status_on(void) {
+    leds_turn_on(1);
+    bool status = led_check_status(1);
+    TEST_ASSERT_EQUAL_UINT16(true, status);
+}
