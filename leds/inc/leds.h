@@ -44,4 +44,4 @@ void leds_turn_all_off(void);
  * @return true si el led esta prendido
  * @return false si el led está apagado
  */
-bool check_led_status(int led);
+bool led_check_status(int led);
