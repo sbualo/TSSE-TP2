@@ -24,3 +24,24 @@ void leds_turn_on(int led);
  * @param led Numero de led a apagar
  */
 void leds_turn_off(int led);
+
+/**
+ * @brief Funcion que prende todos los LEDs utilizados
+ *
+ */
+void leds_turn_all_on(void);
+
+/**
+ * @brief Funcion que apaga todos los LEDs utilizados
+ *
+ */
+void leds_turn_all_off(void);
+
+/**
+ * @brief Funcion que devuelve el estado de un led
+ *
+ * @param led  El numerdo de led a consultar
+ * @return true si el led esta prendido
+ * @return false si el led está apagado
+ */
+bool check_led_status(int led);
