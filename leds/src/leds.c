@@ -32,3 +32,7 @@ void leds_turn_all_off(void) {
 
     *leds_array &= (ALL_LED_OFF);
 }
+
+bool check_led_status(int led) {
+    return true;
+}
