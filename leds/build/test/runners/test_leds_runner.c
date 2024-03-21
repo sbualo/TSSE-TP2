@@ -14,9 +14,11 @@ extern void test_todos_los_led_deben_estar_apagados_al_iniciar_el_driver(void);
 extern void test_prender_un_led(void);
 extern void test_apagar_un_led(void);
 extern void test_operar_varios_led(void);
-extern void test_prender_apagar_todos_los_led(void);
+extern void test_prender_todos_los_led(void);
+extern void test_apagar_todos_los_led(void);
 extern void test_limit_values(void);
 extern void test_limit_values_all_leds_on(void);
+extern void test_check_led_status(void);
 
 /*=======Mock Management=====*/
 static void CMock_Init(void) {
@@ -76,13 +78,15 @@ static void run_test(UnityTestFunction func, const char * name, UNITY_LINE_TYPE 
 int main(void) {
     UnityBegin("test_leds.c");
     run_test(test_todos_los_led_deben_estar_apagados_al_iniciar_el_driver,
-             "test_todos_los_led_deben_estar_apagados_al_iniciar_el_driver", 15);
-    run_test(test_prender_un_led, "test_prender_un_led", 24);
-    run_test(test_apagar_un_led, "test_apagar_un_led", 33);
-    run_test(test_operar_varios_led, "test_operar_varios_led", 41);
-    run_test(test_prender_apagar_todos_los_led, "test_prender_apagar_todos_los_led", 52);
-    run_test(test_limit_values, "test_limit_values", 72);
-    run_test(test_limit_values_all_leds_on, "test_limit_values_all_leds_on", 96);
+             "test_todos_los_led_deben_estar_apagados_al_iniciar_el_driver", 24);
+    run_test(test_prender_un_led, "test_prender_un_led", 32);
+    run_test(test_apagar_un_led, "test_apagar_un_led", 41);
+    run_test(test_operar_varios_led, "test_operar_varios_led", 49);
+    run_test(test_prender_todos_los_led, "test_prender_todos_los_led", 60);
+    run_test(test_apagar_todos_los_led, "test_apagar_todos_los_led", 68);
+    run_test(test_limit_values, "test_limit_values", 73);
+    run_test(test_limit_values_all_leds_on, "test_limit_values_all_leds_on", 97);
+    run_test(test_check_led_status, "test_check_led_status", 127);
 
     return UnityEnd();
 }
