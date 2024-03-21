@@ -34,5 +34,6 @@ void leds_turn_all_off(void) {
 }
 
 bool led_check_status(int led) {
-    return false;
+    return (*leds_array >> (led - 1)) &
+           1; // El numero de led es un numero menos del nro de bit (bit 0 es el 1er led)
 }
