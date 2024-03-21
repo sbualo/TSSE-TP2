@@ -34,5 +34,5 @@ void leds_turn_all_off(void) {
 }
 
 bool led_check_status(int led) {
-    return true;
+    return false;
 }

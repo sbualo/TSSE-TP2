@@ -121,7 +121,7 @@ void test_limit_values_all_leds_on(void) {
     TEST_ASSERT_EQUAL_UINT16(0b0111111111111111, leds_virtuales);
 }
 
-void test_check_led_status(void) {
+void test_check_led_status_off(void) {
     bool status = led_check_status(1);
     TEST_ASSERT_EQUAL_UINT16(false, status);
 }
