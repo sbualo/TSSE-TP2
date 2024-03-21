@@ -151,4 +151,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/c,visualstudiocode,macos,windows,linux
 
 #Para usar con el mail
-build/*
+leds/build/*
